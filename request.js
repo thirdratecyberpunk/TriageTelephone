@@ -9,19 +9,30 @@ const server = app.listen(process.env.PORT || 80, () => {
 console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 });
 
-// app.get('/', function (req, res){
-//   console.log("Hello!");
-// })
-
 app.get('/answer', function (req, res) {
 const ncco = [
 {
 action: 'talk',
 voiceName: 'Jennifer',
 text: 'Hello, thank you for calling. This is Jennifer from Nexmo. Ciao.'
+},{
+action: 'talk',
+voiceName: 'Jennifer',
+text: 'Hello, thank you for calling. This is Jennifer from Nexmo. Ciao.'
+},
+{
+  action: "record",
+  eventUrl: ["https://0759ca2b.ngrok.io/voicemails"],
+  endOnSilence: "3",
+  endOnKey: "#",
+  beepStart: "true"
+},
+{
+  action: "talk",
+  text: "Butts lol"
 }
-];
-res.json(ncco);
+]
+res.send(ncco);
 });
 
 app.post('/event', function (req, res) {
