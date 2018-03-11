@@ -20,7 +20,7 @@ var transporter = nodemailer.createTransport({
 // setup e-mail data
 var mailOptions = {
     from: '"Our Code World " <myersj@aston.ac.uk>', // sender address (who sends)
-    to: 'blackbul@aston.ac.uk, myersj@aston.ac.uk', // list of receivers (who receives)
+    to: 'blackbul@aston.ac.uk', // list of receivers (who receives)
     subject: 'Hello', // Subject line
     text: 'Hello world ', // plaintext body
     html: '<b>Hello world </b><br> This is the first email sent with Nodemailer in Node.js' // html body
