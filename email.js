@@ -24,8 +24,13 @@ var transporter = nodemailer.createTransport({
 
 // setup e-mail data
 var mailOptions = {
+<<<<<<< HEAD
     from: '"DR DAN" <myersj@aston.ac.uk>', // sender address (who sends)
     to: recipient, // list of receivers (who receives)
+=======
+    from: '"Our Code World " <myersj@aston.ac.uk>', // sender address (who sends)
+    to: 'blackbul@aston.ac.uk', // list of receivers (who receives)
+>>>>>>> 4c74643b927b94c42c8b4e2f48c885627131c0cd
     subject: 'Hello', // Subject line
     html: '<b>AUTOMATED - TRIAGE RESULTS PATIENT:' + patientID + '</b><br> Hi, here is your automated email from your patient ' + patientID + ' . Please find attatched the results of the tests.', // html body
     attachments: [{
