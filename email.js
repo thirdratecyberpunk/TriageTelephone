@@ -4,6 +4,11 @@ const request = require('request');
 var http = require('http');
 const nodemailer = require('nodemailer');
 
+var doctor = 'myersj@aston.ac.uk';
+var path = '/Users/Jenny/Downloads/Jillian_Michaels_30_Day_Shred_Workout_-_[GuruFuel-RIP].zip'
+var patient = "0001";
+
+function sendMail(recipient, filePath, patientID){
 var transporter = nodemailer.createTransport({
     host: 'smtp.office365.com',
     port: 587,
@@ -12,18 +17,20 @@ var transporter = nodemailer.createTransport({
       ciphers:'SSLv3'
     },
     auth: {
-        user: process.env.USERNAME,
-        pass: process.env.PASSWORD
+        user: //username
+        pass: //password
     }
 });
 
 // setup e-mail data
 var mailOptions = {
-    from: '"Our Code World " <myersj@aston.ac.uk>', // sender address (who sends)
-    to: 'blackbul@aston.ac.uk, myersj@aston.ac.uk', // list of receivers (who receives)
+    from: '"DR DAN" <myersj@aston.ac.uk>', // sender address (who sends)
+    to: recipient, // list of receivers (who receives)
     subject: 'Hello', // Subject line
-    text: 'Hello world ', // plaintext body
-    html: '<b>Hello world </b><br> This is the first email sent with Nodemailer in Node.js' // html body
+    html: '<b>AUTOMATED - TRIAGE RESULTS PATIENT:' + patientID + '</b><br> Hi, here is your automated email from your patient ' + patientID + ' . Please find attatched the results of the tests.', // html body
+    attachments: [{
+      path: filePath
+    }]
 };
 
 // send mail with defined transport object
@@ -34,3 +41,6 @@ transporter.sendMail(mailOptions, function(error, info){
 
     console.log('Message sent: ' + info.response);
 });
+}
+
+sendMail(doctor, path, patient);
